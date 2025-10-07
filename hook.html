@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up | B.B Password Checker</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <link rel="stylesheet" href="Signup.css">
+</head>
+
+<body>
+    <nav>
+        <div class="logo">B.B Password Checker</div>
+        <button class="menu-toggle" id="menuToggle">☰</button>
+        <div class="nav-links" id="navLinks">
+            <a href="signin.html">Sign In</a>
+            <button class="btn">Sign Up</button>
+        </div>
+    </nav>
+
+    <section class="signup-container">
+        <div class="signup-box">
+            <h2>Create Your Account</h2>
+            <form id="signupForm">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" placeholder="Enter your name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Enter password" required>
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" id="confirmPassword" placeholder="Confirm password" required>
+                </div>
+                <button type="submit">Sign Up</button>
+                <p>Already have an account? <a href="kola.html">Sign in</a></p>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        © 2025 Password Checker | Built with 💙 by Bright Babatunde
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script>
+        (function () {
+            const menuToggle = document.getElementById('menuToggle');
+            const navLinks = document.getElementById('navLinks');
+            menuToggle.addEventListener('click', () => navLinks.classList.toggle('active'));
+
+            const form = document.getElementById('signupForm');
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                const name = document.getElementById('name').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const password = document.getElementById('password').value.trim();
+                const confirmPassword = document.getElementById('confirmPassword').value.trim();
+                if (password.length < 6) {
+                    Toastify({ text: 'Password must be at least 6 characters!', duration: 3000, gravity: 'top', position: 'center', backgroundColor: '#ef4444' }).showToast();
+                    return;
+                }
+                if (password !== confirmPassword) {
+                    Toastify({ text: 'Passwords do not match!', duration: 3000, gravity: 'top', position: 'center', backgroundColor: '#ef4444' }).showToast();
+                    return;
+                }
+                const existingUsers = JSON.parse(localStorage.getItem('users')) || [];
+                const userExists = existingUsers.some(u => u.email === email);
+                if (userExists) {
+                    Toastify({ text: 'Email already registered!', duration: 3000, gravity: 'top', position: 'center', backgroundColor: '#f59e0b' }).showToast();
+                    return;
+                }
+                existingUsers.push({ name, email, password });
+                localStorage.setItem('users', JSON.stringify(existingUsers));
+                Toastify({ text: 'Account created successfully!', duration: 3000, gravity: 'top', position: 'center', backgroundColor: '#10b981' }).showToast();
+                setTimeout(() => window.location.href = 'signin.html', 1200);
+            });
+        })();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Strength Checker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="card">
+            <h2>Password Strength Checker</h2>
+
+            <div class="input-row">
+                <input type="password" id="password" placeholder="Enter your password" aria-label="Password input">
+                <button class="show-btn" id="toggle" aria-pressed="false">Show</button>
+            </div>
+
+            <div class="meta-row">
+                <div class="progress">
+                    <div class="bar" id="bar"></div>
+                </div>
+                <div class="meta-tags">
+                    <span class="tag" id="entropy">Entropy: 0 bits</span>
+                    <span class="tag" id="len">Len: 0</span>
+                </div>
+            </div>
+
+            <p class="strength" id="strength"></p>
+
+            <h4>Feedback & Suggestions</h4>
+            <ul id="feedback"></ul>
+        </div>
+
+        <div class="card">
+            <h4>Checks performed</h4>
+            <ul class="checks">
+                <li>Length</li>
+                <li>Upper / lower / digits / symbols</li>
+                <li>Entropy estimate</li>
+                <li>Common-password blacklist (simple)</li>
+                <li>Repeats & sequences</li>
+            </ul>
+            <p><strong>Entropy</strong> measures how random or hard-to-guess your password is. Higher bits mean stronger
+                passwords.</p>
+            <p><strong>Length</strong> measures how many characters are in your password. Longer passwords are generally
+                more secure.</p>
+        </div>
+    </div>
+</body>
+<script src="script.js"></script>
+
+</html>

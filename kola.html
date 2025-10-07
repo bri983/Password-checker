@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign In | B.B Password Checker</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <link rel="stylesheet" href="Signin.css">
+</head>
+
+<body>
+    <nav>
+        <div class="logo">B.B Password Checker</div>
+        <button class="menu-toggle" id="menuToggle">☰</button>
+        <div class="nav-links" id="navLinks">
+            <a href="signup.html">Sign Up</a>
+            <button class="btn">Sign In</button>
+        </div>
+    </nav>
+
+    <section class="signin-container">
+        <div class="signin-box">
+            <h2>Welcome Back</h2>
+            <form id="signinForm">
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Enter your password" required>
+                </div>
+                <button type="submit">Sign In</button>
+                <p>Don’t have an account? <a href="Signup.html">Sign up</a></p>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        © 2025 Password Checker | Built with 💙 by Bright Babatunde
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script>
+        (function () {
+            const menuToggle = document.getElementById('menuToggle');
+            const navLinks = document.getElementById('navLinks');
+            menuToggle.addEventListener('click', () => navLinks.classList.toggle('active'));
+
+            const form = document.getElementById('signinForm');
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                const email = document.getElementById('email').value.trim();
+                const password = document.getElementById('password').value.trim();
+                const users = JSON.parse(localStorage.getItem('users')) || [];
+                const user = users.find(u => u.email === email && u.password === password);
+                if (!user) {
+                    Toastify({ text: 'Invalid email or password!', duration: 3000, gravity: 'top', position: 'center', backgroundColor: '#ef4444' }).showToast();
+                    return;
+                }
+                localStorage.setItem('currentUser', JSON.stringify(user));
+                Toastify({ text: 'Login successful! Redirecting...', duration: 3000, gravity: 'top', position: 'center', backgroundColor: '#10b981' }).showToast();
+                setTimeout(() => { window.location.href = 'pass.html'; }, 1200);
+            });
+        })();
+    </script>
+</body>
+
+</html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign In | B.B Password Checker</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <link rel="stylesheet" href="Signin.css">
+</head>
+
+<body>
+    <nav>
+        <div class="logo">B.B Password Checker</div>
+        <button class="menu-toggle" id="menuToggle">☰</button>
+        <div class="nav-links" id="navLinks">
+            <a href="signup.html">Sign Up</a>
+            <button class="btn">Sign In</button>
+        </div>
+    </nav>
+
+    <section class="signin-container">
+        <div class="signin-box">
+            <h2>Welcome Back</h2>
+            <form id="signinForm">
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Enter your password" required>
+                </div>
+                <button type="submit">Sign In</button>
+                <p>Don’t have an account? <a href="hook.html">Sign up</a></p>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        © 2025 Password Checker | Built with 💙 by Bright Babatunde
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        const form = document.getElementById("signinForm");
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
+
+            const email = document.getElementById("email").value.trim();
+            const password = document.getElementById("password").value.trim();
+
+            const users = JSON.parse(localStorage.getItem("users")) || [];
+            const user = users.find(u => u.email === email && u.password === password);
+
+            if (!user) {
+                Toastify({
+                    text: "Invalid email or password!",
+                    duration: 3000,
+                    gravity: "top",
+                    position: "center",
+                    backgroundColor: "#ef4444"
+                }).showToast();
+                return;
+            }
+
+            localStorage.setItem("currentUser", JSON.stringify(user));
+            Toastify({
+                text: "Login successful! Redirecting...",
+                duration: 3000,
+                gravity: "top",
+                position: "center",
+                backgroundColor: "#10b981"
+            }).showToast();
+
+            setTimeout(() => {
+                window.location.href = "pass.html"; // Change destination if needed
+            }, 2000);
+        });
+    </script>
+</body>
+
+</html>
