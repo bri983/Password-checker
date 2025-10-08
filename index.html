@@ -145,7 +145,8 @@
             border-radius: 20px;
             box-shadow: 0 10px 35px rgba(0, 0, 0, 0.5);
             animation: float 4s ease-in-out infinite;
-            margin-right: 100px;
+            margin: 0;
+            /* avoid fixed right margin which can cause overflow on small screens */
         }
 
         @keyframes float {
@@ -203,6 +204,80 @@
             .hero img {
                 max-width: 320px;
                 margin-top: 1rem;
+            }
+        }
+
+        /* Desktop spacing for hero image */
+        @media (min-width: 769px) {
+            .hero img {
+                margin-right: 100px;
+            }
+        }
+
+        /* Extra-small phones: improve spacing, font sizes, button layout */
+        @media (max-width: 420px) {
+            nav {
+                padding: 0.6rem 1rem;
+            }
+
+            .logo {
+                font-size: 1.1rem;
+            }
+
+            .menu-toggle {
+                font-size: 1.6rem;
+            }
+
+            .nav-links {
+                right: 10px;
+                width: 160px;
+                top: 58px;
+                padding: 0.6rem;
+            }
+
+            .hero {
+                padding: 2rem 1rem;
+                gap: 1rem;
+            }
+
+            .hero-content {
+                max-width: 100%;
+                padding: 0 0.2rem;
+            }
+
+            .hero-content h1 {
+                font-size: 1.5rem;
+            }
+
+            .hero-content p {
+                font-size: 0.95rem;
+                margin-bottom: 1rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                gap: 0.6rem;
+                align-items: stretch;
+            }
+
+            .hero-buttons .btn,
+            .hero-buttons a .btn {
+                width: 100%;
+                padding: 0.7rem 0.8rem;
+                border-radius: 10px;
+                font-size: 0.95rem;
+            }
+
+            .hero img {
+                max-width: 100%;
+                margin: 0 auto;
+                order: 2;
+                box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+            }
+
+            footer {
+                padding: 1rem;
+                font-size: 0.85rem;
             }
         }
 
